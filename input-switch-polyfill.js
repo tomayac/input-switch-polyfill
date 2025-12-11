@@ -5,7 +5,9 @@
     return;
   }
 
-  const sheet = await import('./input-switch-polyfill.css', { with: { type: 'css' } });
+  const sheet = await import('./input-switch-polyfill.css', {
+    with: { type: 'css' },
+  });
   document.adoptedStyleSheets = [sheet.default];
 
   // Helper to upgrade a single checkbox

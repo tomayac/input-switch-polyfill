@@ -36,8 +36,9 @@ This package ships the following files:
 
 ### Using a simple static copy
 
-Alternatively, copy `input-switch-polyfill.js` and `input-switch-polyfill.css` into your project
-(for example, next to your `index.html`) and reference them directly.
+Alternatively, copy `input-switch-polyfill.js` and `input-switch-polyfill.css`
+into your project (for example, next to your `index.html`) and reference them
+directly.
 
 ## Usage
 
@@ -83,8 +84,8 @@ The polyfill reads the computed `accent-color` of each
 - Set `accent-color` inline (as in the examples above)
 - Or set `accent-color` via CSS rules
 
-The provided `input-switch-polyfill.css` uses `--switch-accent` to style the visual
-switch.
+The provided `input-switch-polyfill.css` uses `--switch-accent` to style the
+visual switch.
 
 ## Demo
 
