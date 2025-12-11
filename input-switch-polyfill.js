@@ -6,9 +6,8 @@
   }
 
   const sheetPromise = fetch(import.meta.resolve('./input-switch-polyfill.css'))
-        .then((r) => r.text())
-        .then((css) => new CSSStyleSheet().replace(css))
-    );
+    .then((r) => r.text())
+    .then((css) => new CSSStyleSheet().replace(css));
 
   // Helper to upgrade a single checkbox
   function upgradeSwitch(input) {
@@ -17,6 +16,14 @@
 
     // Apply the class that triggers our CSS
     input.classList.add('switch');
+
+    // Set the ARIA role
+    input.setAttribute('role', 'switch');
+    input.addEventListener('change', () => {
+      input.setAttribute('aria-checked', input.checked.toString());
+    });
+    input.setAttribute('aria-checked', input.checked.toString());
+    input.setAttribute('aria-readonly', input.disabled.toString());
 
     // Handle accent-color support
     // We read the computed accent-color (inherited or set explicitly)

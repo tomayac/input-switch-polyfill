@@ -17,9 +17,24 @@ input.switch {
   box-shadow: inset -1em 0px 0px 0px rgba(192, 192, 192, 1);
   background-color: white;
   border: 1px solid rgba(192, 192, 192, 1);
-  outline: none;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  font-size: inherit;
+  position: relative;
+  top: 0.2em;
+}
+
+input.switch:is(:hover, :active, :focus) {
+  -webkit-transition:
+    box-shadow 0.2s,
+    border 0.2s,
+    opacity 0.2s;
+  transition:
+    box-shadow 0.2s,
+    border 0.2s,
+    opacity 0.2s;
+}
+
+[dir='rtl'] input.switch {
+  transform: rotate(180deg);
 }
 
 input.switch:checked {
@@ -31,6 +46,20 @@ input.switch:checked {
   border: 1px solid var(--switch-accent);
 }
 
+input.switch[disabled] {
+  opacity: 0.5;
+}
+
+/*
+input.switch[disabled] {
+  box-shadow: inset -1em 0px 0px 0px color-mix(in hsl, CanvasText 50%, Canvas);
+  border: 1px solid color-mix(in hsl, CanvasText 50%, Canvas);
+}
+
+input.switch[disabled]:checked {
+  box-shadow: inset 1em 0px 0px 0px color-mix(in hsl, CanvasText 50%, Canvas);
+}
+*/
 /* Fallback for browsers that don't support color-mix 
    (Older browsers will just see the solid default blue)
 */
