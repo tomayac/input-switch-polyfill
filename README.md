@@ -50,16 +50,9 @@ pattern prevents flash of unstyled content (FOUC).
 <style>
   input[switch] {
     visibility: hidden;
+    animation: unhideAfterTimeout 2s;
   }
 </style>
-
-<noscript>
-  <style>
-    input[switch] {
-      visibility: visible;
-    }
-  </style>
-</noscript>
 
 <script type="module">
   if (!('switch' in HTMLInputElement.prototype)) {
