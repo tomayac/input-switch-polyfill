@@ -50,7 +50,10 @@ prevents flash of unstyled content (FOUC).
 ```html
 <style>
   @keyframes hideBriefly {
-    0%, 100% { visibility: hidden; }
+    0%,
+    100% {
+      visibility: hidden;
+    }
   }
 
   input[switch] {
@@ -58,7 +61,14 @@ prevents flash of unstyled content (FOUC).
   }
 </style>
 
-<noscript><style>input[switch] {animation: none;}</style></noscript>
+<noscript>
+  <style>
+    input[switch] {
+      animation: none;
+    }
+  </style>
+</noscript>
+
 <script type="module">
   if (!('switch' in HTMLInputElement.prototype)) {
     await import('./input-switch-polyfill.js');
