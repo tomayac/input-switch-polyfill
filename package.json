@@ -20,6 +20,10 @@
   "scripts": {
     "start": "npx http-server"
   },
+  "files": [
+    "input-switch.js",
+    "input-switch.css"
+  ],
   "devDependencies": {
     "http-server": "^14.1.1"
   }
