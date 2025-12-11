@@ -48,6 +48,10 @@ pattern prevents flash of unstyled content (FOUC).
 
 ```html
 <style>
+  @keyframes unhideAfterTimeout {
+    0%, 100% { visibility: hidden; } 
+  }
+  
   input[switch] {
     visibility: hidden;
     animation: unhideAfterTimeout 2s;
@@ -60,7 +64,7 @@ pattern prevents flash of unstyled content (FOUC).
   } else {
     document.head.insertAdjacentHTML(
       'beforeend',
-      `<style>input[switch] {visibility:visible;}</style>`
+      `<style>input[switch] {visibility:visible; animation: unhideAfterTimeout 2s;}</style>`
     );
   }
 </script>
