@@ -1,11 +1,5 @@
-@keyframes unhideAfterTimeout {
-  /* Kudos: https://scottjehl.com/posts/web-component-self-destruct-css/ */
-  0%, 100% { visibility: hidden; } 
-}
-
 input[switch] {
   visibility: visible;
-  animation: unhideAfterTimeout 2s;
 }
 
 /* Base styles for the polyfilled switch */
