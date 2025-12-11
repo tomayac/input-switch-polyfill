@@ -12,10 +12,34 @@
       body {
         font-family: system-ui, sans-serif;
       }
+
+      div {
+        margin-block: 1rem;
+      }
     </style>
+
+    <style>
+      input[switch] {
+        visibility: hidden;
+      }
+    </style>
+
+    <noscript>
+      <style>
+        input[switch] {
+          visibility: visible;
+        }
+      </style>
+    </noscript>
+
     <script type="module">
       if (!('switch' in HTMLInputElement.prototype)) {
         await import('./input-switch-polyfill.js');
+      } else {
+        document.head.insertAdjacentHTML(
+          'beforeend',
+          `<style>input[switch] {visibility:visible;}</style>`
+        );
       }
     </script>
   </head>

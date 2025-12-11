@@ -1,3 +1,7 @@
+input[switch] {
+  visibility: visible;
+}
+
 /* Base styles for the polyfilled switch */
 input.switch {
   /* Default fallback color (your original blue) */

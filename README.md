@@ -42,7 +42,38 @@ directly.
 
 ## Usage
 
-In your HTML, use checkboxes with the `switch` attribute:
+Conditionally load the polyfill as an ES module to only apply it when the
+browser does **not** already support `input[switch]` natively. This loading
+pattern prevents flash of unstyled content (FOUC).
+
+```html
+<style>
+  input[switch] {
+    visibility: hidden;
+  }
+</style>
+
+<noscript>
+  <style>
+    input[switch] {
+      visibility: visible;
+    }
+  </style>
+</noscript>
+
+<script type="module">
+  if (!('switch' in HTMLInputElement.prototype)) {
+    await import('./input-switch-polyfill.js');
+  } else {
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `<style>input[switch] {visibility:visible;}</style>`
+    );
+  }
+</script>
+```
+
+Then, in your HTML, use checkboxes with the `switch` attribute:
 
 ```html
 <label>
@@ -59,17 +90,6 @@ In your HTML, use checkboxes with the `switch` attribute:
   Accent color #00ff00 default checked
   <input type="checkbox" switch checked style="accent-color: #00ff00" />
 </label>
-```
-
-Then, conditionally load the polyfill as an ES module to only apply it when the
-browser does **not** already support `input[switch]` natively:
-
-```html
-<script type="module">
-  if (!('switch' in HTMLInputElement.prototype)) {
-    await import('./input-switch-polyfill.js');
-  }
-</script>
 ```
 
 This mirrors the usage in `index.html` in this repository.

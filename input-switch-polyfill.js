@@ -5,10 +5,9 @@
     return;
   }
 
-  const sheet = await import('./input-switch-polyfill.css', {
+  const sheetPromise = import('./input-switch-polyfill.css', {
     with: { type: 'css' },
   });
-  document.adoptedStyleSheets = [sheet.default];
 
   // Helper to upgrade a single checkbox
   function upgradeSwitch(input) {
@@ -30,11 +29,12 @@
   }
 
   // Initial Run
-  function init() {
+  async function init() {
     const switches = document.querySelectorAll(
       'input[type="checkbox"][switch]'
     );
     switches.forEach(upgradeSwitch);
+    document.adoptedStyleSheets = [(await sheetPromise).default];
   }
 
   // Observer for dynamic content (SPAs, HTMX, etc.)
