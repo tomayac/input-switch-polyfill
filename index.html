@@ -19,8 +19,13 @@
     </style>
 
     <style>
+      @keyframes unhideAfterTimeout {
+        0%, 100% { visibility: visible; } 
+      }
+
       input[switch] {
         visibility: hidden;
+        animation: unhideAfterTimeout 2s;
       }
     </style>
 
