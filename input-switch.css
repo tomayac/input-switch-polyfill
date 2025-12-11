@@ -1,8 +1,8 @@
 /* Base styles for the polyfilled switch */
 input.switch {
   /* Default fallback color (your original blue) */
-  --switch-accent: #2196f3; 
-  
+  --switch-accent: #2196f3;
+
   -moz-appearance: none;
   -webkit-appearance: none;
   -o-appearance: none;
@@ -22,7 +22,8 @@ input.switch:checked {
   /* Use color-mix to replicate your 0.5 alpha on the box-shadow 
      while keeping the border solid.
   */
-  box-shadow: inset 1em 0px 0px 0px color-mix(in srgb, var(--switch-accent), transparent 50%);
+  box-shadow: inset 1em 0px 0px 0px
+    color-mix(in srgb, var(--switch-accent), transparent 50%);
   border: 1px solid var(--switch-accent);
 }
 
@@ -31,7 +32,7 @@ input.switch:checked {
 */
 @supports not (color: color-mix(in srgb, red, blue)) {
   input.switch:checked {
-     box-shadow: inset 1em 0px 0px 0px rgba(33, 150, 243, 0.5);
-     border: 1px solid rgba(33, 150, 243, 1);
+    box-shadow: inset 1em 0px 0px 0px rgba(33, 150, 243, 0.5);
+    border: 1px solid rgba(33, 150, 243, 1);
   }
 }

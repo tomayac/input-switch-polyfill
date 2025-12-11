@@ -1,4 +1,4 @@
-(function() {
+(function () {
   // 1. Feature Detection
   // If the browser prototype has the 'switch' property, we trust native support.
   if ('switch' in HTMLInputElement.prototype) {
@@ -26,7 +26,9 @@
 
   // 2. Initial Run
   function init() {
-    const switches = document.querySelectorAll('input[type="checkbox"][switch]');
+    const switches = document.querySelectorAll(
+      'input[type="checkbox"][switch]'
+    );
     switches.forEach(upgradeSwitch);
   }
 
@@ -35,13 +37,19 @@
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList') {
         mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === 1) { // Element node
+          if (node.nodeType === 1) {
+            // Element node
             // Check the node itself
-            if (node.matches && node.matches('input[type="checkbox"][switch]')) {
+            if (
+              node.matches &&
+              node.matches('input[type="checkbox"][switch]')
+            ) {
               upgradeSwitch(node);
             }
             // Check descendants
-            const nestedSwitches = node.querySelectorAll ? node.querySelectorAll('input[type="checkbox"][switch]') : [];
+            const nestedSwitches = node.querySelectorAll
+              ? node.querySelectorAll('input[type="checkbox"][switch]')
+              : [];
             nestedSwitches.forEach(upgradeSwitch);
           }
         });
