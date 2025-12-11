@@ -34,6 +34,23 @@
     if (accent && accent !== 'auto') {
       input.style.setProperty('--switch-accent', accent);
     }
+
+    // Create the observer
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        // Check if the disabled attribute is what changed
+        if (mutation.attributeName === 'disabled') {
+          // Check if it was added (true) or removed (false)
+          input.setAttribute('aria-readonly', input.disabled.toString());
+        }
+      });
+    });
+
+    // Start observing the element
+    observer.observe(input, {
+      attributes: true, // Watch for attribute changes
+      attributeFilter: ['disabled'], // Only fire for the 'disabled' attribute
+    });
   }
 
   // Initial Run
