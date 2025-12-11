@@ -1,5 +1,5 @@
 input[switch] {
-  visibility: visible;
+  animation: none;
 }
 
 /* Base styles for the polyfilled switch */

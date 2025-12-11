@@ -43,28 +43,29 @@ directly.
 ## Usage
 
 Conditionally load the polyfill as an ES module to only apply it when the
-browser does **not** already support `input[switch]` natively. This loading
-pattern prevents flash of unstyled content (FOUC).
+browser does **not** already support `input[switch]` natively, and hide the
+switch input temporarily to give it a chance to load. This loading pattern
+prevents flash of unstyled content (FOUC).
 
 ```html
 <style>
-  @keyframes unhideAfterTimeout {
-    0%, 100% { visibility: visible; } 
+  @keyframes hideBriefly {
+    0%, 100% { visibility: hidden; }
   }
 
   input[switch] {
-    visibility: hidden;
-    animation: unhideAfterTimeout 2s;
+    animation: hideBriefly 2s;
   }
 </style>
 
+<noscript><style>input[switch] {animation: none;}</style></noscript>
 <script type="module">
   if (!('switch' in HTMLInputElement.prototype)) {
     await import('./input-switch-polyfill.js');
   } else {
     document.head.insertAdjacentHTML(
       'beforeend',
-      `<style>input[switch] {visibility:visible;}</style>`
+      `<style>input[switch] {animation:none;}</style>`
     );
   }
 </script>
