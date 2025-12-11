@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;input switch type="checkbox"&gt; polyfill</title>
+    <title>&lt;input type="checkbox" switch&gt; polyfill</title>
     <style>
       :root {
         color-scheme: dark light;
@@ -20,25 +20,23 @@
     </script>
   </head>
   <body>
+    <h1><code>&lt;input type="checkbox" switch&gt;</code> polyfill</h1>
     <div>
-      <label
-        >Default
-        <input type="checkbox" switch />
-      </label>
+      <label>Default <input type="checkbox" switch /></label>
     </div>
 
     <div>
       <label
         >Accent color red
-        <input type="checkbox" switch style="accent-color: red" />
-      </label>
+        <input type="checkbox" switch style="accent-color: red"
+      /></label>
     </div>
 
     <div>
       <label
         >Accent color #00ff00 default checked
-        <input type="checkbox" switch checked style="accent-color: #00ff00" />
-      </label>
+        <input type="checkbox" switch checked style="accent-color: #00ff00"
+      /></label>
     </div>
   </body>
 </html>

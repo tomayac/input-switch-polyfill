@@ -1,8 +1,8 @@
-# `<input switch type="checkbox">` Polyfill
+# `<input type="checkbox" switch>` Polyfill
 
 This project is a small, zero-dependency polyfill for the
 [HTML switch control](https://webkit.org/blog/15054/an-html-switch-control/)
-`<input switch type="checkbox">`.
+`<input type="checkbox" switch>`.
 
 The polyfill provides a visual switch-style control for checkboxes using the
 `switch` attribute, and gracefully defers to native browser support where
