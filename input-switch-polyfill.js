@@ -5,12 +5,7 @@
     return;
   }
 
-  const sheetPromise = import("./input-switch-polyfill.css", {
-    with: { type: "css" },
-  })
-    .then(m => m.default)
-    .catch(() =>
-      fetch(import.meta.resolve("./input-switch-polyfill.css"))
+  const sheetPromise = fetch(import.meta.resolve('./input-switch-polyfill.css'))
         .then((r) => r.text())
         .then((css) => new CSSStyleSheet().replace(css))
     );
