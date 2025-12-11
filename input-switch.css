@@ -1,0 +1,37 @@
+/* Base styles for the polyfilled switch */
+input.switch {
+  /* Default fallback color (your original blue) */
+  --switch-accent: #2196f3; 
+  
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  height: 1em;
+  width: 2em;
+  border-radius: 1em;
+  box-shadow: inset -1em 0px 0px 0px rgba(192, 192, 192, 1);
+  background-color: white;
+  border: 1px solid rgba(192, 192, 192, 1);
+  outline: none;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+input.switch:checked {
+  /* Use color-mix to replicate your 0.5 alpha on the box-shadow 
+     while keeping the border solid.
+  */
+  box-shadow: inset 1em 0px 0px 0px color-mix(in srgb, var(--switch-accent), transparent 50%);
+  border: 1px solid var(--switch-accent);
+}
+
+/* Fallback for browsers that don't support color-mix 
+   (Older browsers will just see the solid default blue)
+*/
+@supports not (color: color-mix(in srgb, red, blue)) {
+  input.switch:checked {
+     box-shadow: inset 1em 0px 0px 0px rgba(33, 150, 243, 0.5);
+     border: 1px solid rgba(33, 150, 243, 1);
+  }
+}
