@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="input-switch.css" />
-    <script type="module" src="input-switch.js"></script>
+    <title>&lt;input switch type="checkbox"&gt; polyfill</title>
     <style>
       :root {
         color-scheme: dark light;
@@ -16,6 +13,11 @@
         font-family: system-ui, sans-serif;
       }
     </style>
+    <script type="module">
+      if (!('switch' in HTMLInputElement.prototype)) {
+        await import('./input-switch.js');
+      }
+    </script>
   </head>
   <body>
     <div>
@@ -34,8 +36,8 @@
 
     <div>
       <label
-        >Accent color #00ff00
-        <input type="checkbox" switch style="accent-color: #00ff00" />
+        >Accent color #00ff00 default checked
+        <input type="checkbox" switch checked style="accent-color: #00ff00" />
       </label>
     </div>
   </body>

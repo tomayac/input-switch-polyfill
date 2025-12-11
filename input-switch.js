@@ -1,9 +1,12 @@
-(function () {
-  // 1. Feature Detection
+(async () => {
+  // Feature Detection
   // If the browser prototype has the 'switch' property, we trust native support.
   if ('switch' in HTMLInputElement.prototype) {
     return;
   }
+
+  const sheet = await import('./input-switch.css', { with: { type: 'css' } });
+  document.adoptedStyleSheets = [sheet.default];
 
   // Helper to upgrade a single checkbox
   function upgradeSwitch(input) {
@@ -24,7 +27,7 @@
     }
   }
 
-  // 2. Initial Run
+  // Initial Run
   function init() {
     const switches = document.querySelectorAll(
       'input[type="checkbox"][switch]'
@@ -32,7 +35,7 @@
     switches.forEach(upgradeSwitch);
   }
 
-  // 3. Observer for dynamic content (SPAs, HTMX, etc.)
+  // Observer for dynamic content (SPAs, HTMX, etc.)
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList') {
