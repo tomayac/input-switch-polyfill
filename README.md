@@ -21,12 +21,22 @@ npm install input-switch-polyfill
 
 This package ships the following files:
 
-- `input-switch.js` – the polyfill logic
-- `input-switch.css` – the accompanying styles
+- `input-switch-polyfill.js` – the polyfill logic
+- `input-switch-polyfill.css` – the accompanying styles
+
+### Using a CDN
+
+```html
+<script type="module">
+  if (!('switch' in HTMLInputElement.prototype)) {
+    await import('https://unpkg.com/input-switch-polyfill/input-switch-polyfill.js');
+  }
+</script>
+```
 
 ### Using a simple static copy
 
-Alternatively, copy `input-switch.js` and `input-switch.css` into your project
+Alternatively, copy `input-switch-polyfill.js` and `input-switch-polyfill.css` into your project
 (for example, next to your `index.html`) and reference them directly.
 
 ## Usage
@@ -56,7 +66,7 @@ browser does **not** already support `input[switch]` natively:
 ```html
 <script type="module">
   if (!('switch' in HTMLInputElement.prototype)) {
-    await import('./input-switch.js');
+    await import('./input-switch-polyfill.js');
   }
 </script>
 ```
@@ -73,7 +83,7 @@ The polyfill reads the computed `accent-color` of each
 - Set `accent-color` inline (as in the examples above)
 - Or set `accent-color` via CSS rules
 
-The provided `input-switch.css` uses `--switch-accent` to style the visual
+The provided `input-switch-polyfill.css` uses `--switch-accent` to style the visual
 switch.
 
 ## Demo

@@ -1,9 +1,10 @@
 {
   "name": "input-switch-polyfill",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A polyfill for <input switch type=\"checkbox\">",
   "keywords": [
-    "switch"
+    "switch",
+    "input switch"
   ],
   "homepage": "https://github.com/tomayac/input-switch-polyfill#readme",
   "bugs": {
@@ -16,13 +17,13 @@
   "license": "Apache-2.0",
   "author": "Thomas Steiner (tomac@google.com)",
   "type": "module",
-  "main": "input-switch.js",
+  "main": "input-switch-polyfill.js",
   "scripts": {
     "start": "npx http-server"
   },
   "files": [
-    "input-switch.js",
-    "input-switch.css"
+    "input-switch-polyfill.js",
+    "input-switch-polyfill.css"
   ],
   "devDependencies": {
     "http-server": "^14.1.1"
