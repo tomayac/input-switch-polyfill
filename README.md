@@ -76,6 +76,11 @@ The polyfill reads the computed `accent-color` of each
 The provided `input-switch.css` uses `--switch-accent` to style the visual
 switch.
 
+## Demo
+
+You can see a [demo](https://tomayac.github.io/input-switch-polyfill/) of this
+polyfill right in your browser.
+
 ## Development
 
 Clone the repository and install dependencies:
