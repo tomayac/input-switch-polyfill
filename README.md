@@ -43,8 +43,9 @@ directly.
 ## Usage
 
 Conditionally load the polyfill as an ES module to only apply it when the
-browser does **not** already support `input[switch]` natively. This loading
-pattern prevents flash of unstyled content (FOUC).
+browser does **not** already support `input[switch]` natively, and hide the
+switch input temporarily to give it a chance to load. This loading pattern
+prevents flash of unstyled content (FOUC).
 
 ```html
 <style>
@@ -57,6 +58,7 @@ pattern prevents flash of unstyled content (FOUC).
   }
 </style>
 
+<noscript><style>input[switch] {animation: none;}</style></noscript>
 <script type="module">
   if (!('switch' in HTMLInputElement.prototype)) {
     await import('./input-switch-polyfill.js');
