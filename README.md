@@ -49,7 +49,7 @@ pattern prevents flash of unstyled content (FOUC).
 ```html
 <style>
   @keyframes unhideAfterTimeout {
-    0%, 100% { visibility: hidden; } 
+    0%, 100% { visibility: visible; } 
   }
 
   input[switch] {
