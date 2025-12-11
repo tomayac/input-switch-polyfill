@@ -5,9 +5,15 @@
     return;
   }
 
-  const sheetPromise = import('./input-switch-polyfill.css', {
-    with: { type: 'css' },
-  });
+  const sheetPromise = import("./input-switch-polyfill.css", {
+    with: { type: "css" },
+  })
+    .then(m => m.default)
+    .catch(() =>
+      fetch(import.meta.resolve("./input-switch-polyfill.css"))
+        .then((r) => r.text())
+        .then((css) => new CSSStyleSheet().replace(css))
+    );
 
   // Helper to upgrade a single checkbox
   function upgradeSwitch(input) {
@@ -34,7 +40,7 @@
       'input[type="checkbox"][switch]'
     );
     switches.forEach(upgradeSwitch);
-    document.adoptedStyleSheets = [(await sheetPromise).default];
+    document.adoptedStyleSheets = [await sheetPromise];
   }
 
   // Observer for dynamic content (SPAs, HTMX, etc.)
