@@ -33,6 +33,31 @@ input.switch:is(:hover, :active, :focus) {
   transform: rotate(180deg);
 }
 
+.vertical-rl,
+.vertical-lr {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.sideways-rl {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 1.6em;
+}
+label:has(.sideways-rl) {
+  margin-block-end: 0.8em;
+}
+
+.sideways-lr {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  left: 1.4em;
+  margin-inline-start: 0.8em;
+}
+label:has(.sideways-lr) {
+  margin-block-start: -1.2em;
+}
+
 input.switch:checked {
   /* Use color-mix to replicate your 0.5 alpha on the box-shadow 
      while keeping the border solid.

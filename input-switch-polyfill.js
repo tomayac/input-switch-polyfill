@@ -12,45 +12,27 @@
   // Helper to upgrade a single checkbox
   function upgradeSwitch(input) {
     // Avoid double-processing
-    if (input.classList.contains('switch')) return;
+    if (input.classList.contains('switch')) {
+      return;
+    }
 
     // Apply the class that triggers our CSS
     input.classList.add('switch');
 
     // Set the ARIA role
     input.setAttribute('role', 'switch');
-    input.addEventListener('change', () => {
-      input.setAttribute('aria-checked', input.checked.toString());
-    });
-    input.setAttribute('aria-checked', input.checked.toString());
-    input.setAttribute('aria-readonly', input.disabled.toString());
 
-    // Handle accent-color support
+    // Handle `accent-color` and `writing-mode` support
     // We read the computed accent-color (inherited or set explicitly)
     // and assign it to the CSS variable --switch-accent
     const style = getComputedStyle(input);
-    const accent = style.accentColor;
-
-    if (accent && accent !== 'auto') {
-      input.style.setProperty('--switch-accent', accent);
+    const { 'accent-color': accentColor, 'writing-mode': writingMode } = style;
+    if (writingMode) {
+      input.classList.add(writingMode);
     }
-
-    // Create the observer
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        // Check if the disabled attribute is what changed
-        if (mutation.attributeName === 'disabled') {
-          // Check if it was added (true) or removed (false)
-          input.setAttribute('aria-readonly', input.disabled.toString());
-        }
-      });
-    });
-
-    // Start observing the element
-    observer.observe(input, {
-      attributes: true, // Watch for attribute changes
-      attributeFilter: ['disabled'], // Only fire for the 'disabled' attribute
-    });
+    if (accentColor && accentColor !== 'auto') {
+      input.style.setProperty('--switch-accent', accentColor);
+    }
   }
 
   // Initial Run

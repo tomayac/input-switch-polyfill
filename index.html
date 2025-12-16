@@ -52,6 +52,9 @@
   </head>
   <body>
     <h1><code>&lt;input type="checkbox" switch&gt;</code> polyfill</h1>
+
+    <h2>Basic and accent colors</h2>
+
     <div>
       <label>Default <input type="checkbox" switch /></label>
     </div>
@@ -70,12 +73,51 @@
       /></label>
     </div>
 
+    <h2>Directedness</h2>
+
     <div>
       <label dir="rtl"
-        >Right to left
+        >Right to left (<code>dir</code>)
         <input type="checkbox" switch style="accent-color: deeppink"
       /></label>
     </div>
+
+    <div>
+      <label style="writing-mode: horizontal-tb"
+        >Top-to-bottom block flow direction (<code>writing-mode</code>)
+        <input type="checkbox" switch style="accent-color: orange"
+      /></label>
+    </div>
+
+    <div>
+      <label style="writing-mode: vertical-rl"
+        >Right-to-left block flow direction (<code>writing-mode</code>)
+        <input type="checkbox" switch style="accent-color: orange"
+      /></label>
+    </div>
+
+    <div>
+      <label style="writing-mode: vertical-lr"
+        >Left-to-right block flow direction (<code>writing-mode</code>)
+        <input type="checkbox" switch style="accent-color: orange"
+      /></label>
+    </div>
+
+    <div>
+      <label style="writing-mode: sideways-rl"
+        >Right-to-left block flow direction (<code>writing-mode</code>)
+        <input type="checkbox" switch style="accent-color: orange"
+      /></label>
+    </div>
+
+    <div>
+      <label style="writing-mode: sideways-lr"
+        >Left-to-right block flow direction (<code>writing-mode</code>)
+        <input type="checkbox" switch style="accent-color: orange"
+      /></label>
+    </div>
+
+    <h2>Disabledness</h2>
 
     <div>
       <label>Disabled <input type="checkbox" switch disabled /></label>
