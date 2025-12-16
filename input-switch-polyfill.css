@@ -77,3 +77,13 @@ input.switch[disabled] {
     border: 1px solid rgba(33, 150, 243, 1);
   }
 }
+
+@media (prefers-contrast: more) {
+  input.switch {
+    border: 1px solid ButtonText;
+  }
+
+  input.switch:checked {
+    border-color: ButtonText;
+  }
+}

@@ -5,6 +5,12 @@
     return;
   }
 
+  const contrastMediaQueryList = matchMedia('(prefers-contrast: more)');
+  let prefersContrastMore = contrastMediaQueryList.matches;
+  contrastMediaQueryList.addEventListener('change', (event) => {
+    prefersContrastMore = event.matches;
+  });
+
   const sheetPromise = fetch(import.meta.resolve('./input-switch-polyfill.css'))
     .then((r) => r.text())
     .then((css) => new CSSStyleSheet().replace(css));
@@ -110,10 +116,10 @@
           } else {
             target.style.boxShadow = `inset ${offset}px 0px 0px 0px var(--switch-accent)`;
           }
-          target.style.border = `1px solid var(--switch-accent)`;
+          target.style.border = `1px solid ${prefersContrastMore ? 'ButtonText' : 'var(--switch-accent)'}`;
         } else {
           target.style.boxShadow = `inset ${offset}px 0px 0px 0px rgba(192, 192, 192, 1)`;
-          target.style.border = `1px solid rgba(192, 192, 192, 1)`;
+          target.style.border = `1px solid ${prefersContrastMore ? 'ButtonText' : 'rgba(192, 192, 192, 1)'}`;
         }
       };
 
