@@ -26,6 +26,7 @@
         }
       }
 
+      label:has(input[switch]),
       input[switch] {
         animation: hideBriefly 2s;
       }
@@ -33,6 +34,7 @@
 
     <noscript>
       <style>
+        label:has(input[switch]),
         input[switch] {
           animation: none;
         }
@@ -45,15 +47,16 @@
       } else {
         document.head.insertAdjacentHTML(
           'beforeend',
-          `<style>input[switch] {animation:none;}</style>`
+          `<style>label:has(input[switch]),input[switch]{animation:none}</style>`
         );
       }
     </script>
   </head>
+
   <body>
     <h1><code>&lt;input type="checkbox" switch&gt;</code> polyfill</h1>
 
-    <h2>Basic and accent colors</h2>
+    <h2>Basic appearance and accent colors</h2>
 
     <div>
       <label>Default <input type="checkbox" switch /></label>

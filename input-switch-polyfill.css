@@ -1,14 +1,12 @@
+label:has(input[switch]),
 input[switch] {
-  -webkit-animation: none;
   animation: none;
 }
 
 /* Base styles for the polyfilled switch */
 input.switch {
-  /* Default fallback color (your original blue) */
+  /* Default fallback color */
   --switch-accent: #2196f3;
-  -webkit-appearance: none;
-  -o-appearance: none;
   appearance: none;
   height: 1em;
   width: 2em;
@@ -30,37 +28,35 @@ input.switch:is(:hover, :active, :focus) {
 }
 
 [dir='rtl'] input.switch {
-  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 .vertical-rl,
 .vertical-lr {
-  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
 .sideways-rl {
-  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   right: 1.6em;
 }
+
 label:has(.sideways-rl) {
   margin-block-end: 0.8em;
 }
 
 .sideways-lr {
-  -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
   left: 1.4em;
   margin-inline-start: 0.8em;
 }
+
 label:has(.sideways-lr) {
   margin-block-start: -1.2em;
 }
 
 input.switch:checked {
-  /* Use color-mix to replicate your 0.5 alpha on the box-shadow 
+  /* Use color-mix to replicate the 0.5 alpha on the box-shadow 
      while keeping the border solid.
   */
   box-shadow: inset 1em 0px 0px 0px

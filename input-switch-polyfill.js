@@ -9,6 +9,8 @@
     .then((r) => r.text())
     .then((css) => new CSSStyleSheet().replace(css));
 
+  const supportsColorMix = CSS.supports('color: color-mix(in srgb, red, blue)');
+
   // Helper to upgrade a single checkbox
   function upgradeSwitch(input) {
     // Avoid double-processing
@@ -103,9 +105,6 @@
 
         // Update styles
         if (isVisuallyOn) {
-          const supportsColorMix = CSS.supports(
-            'color: color-mix(in srgb, red, blue)'
-          );
           if (supportsColorMix) {
             target.style.boxShadow = `inset ${offset}px 0px 0px 0px color-mix(in srgb, var(--switch-accent), transparent 50%)`;
           } else {

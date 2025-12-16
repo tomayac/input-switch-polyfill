@@ -56,6 +56,7 @@ prevents flash of unstyled content (FOUC).
     }
   }
 
+  label:has(input[switch]),
   input[switch] {
     animation: hideBriefly 2s;
   }
@@ -63,6 +64,7 @@ prevents flash of unstyled content (FOUC).
 
 <noscript>
   <style>
+    label:has(input[switch]),
     input[switch] {
       animation: none;
     }
@@ -75,7 +77,7 @@ prevents flash of unstyled content (FOUC).
   } else {
     document.head.insertAdjacentHTML(
       'beforeend',
-      `<style>input[switch] {animation:none;}</style>`
+      `<style>label:has(input[switch]),input[switch]{animation:none;}</style>`
     );
   }
 </script>
