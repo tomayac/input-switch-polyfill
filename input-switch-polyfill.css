@@ -19,6 +19,7 @@ input.switch {
   font-size: inherit;
   position: relative;
   top: 0.2em;
+  touch-action: none;
 }
 
 input.switch:is(:hover, :active, :focus) {
