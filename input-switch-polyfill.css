@@ -83,7 +83,46 @@ input.switch[disabled] {
     border: 1px solid ButtonText;
   }
 
+  input.switch::after {
+    content: '◯';
+    position: absolute;
+    left: 22em;
+    font-size: 0.05em !important;
+  }
+
   input.switch:checked {
     border-color: ButtonText;
+  }
+
+  input.switch:checked::after {
+    content: '❙';
+    left: 0.75em;
+    top: 0.25em;
+    font-size: 0.5em !important;
+    color: contrast-color(var(--switch-accent));
+  }
+
+  input.switch.vertical-rl::after,
+  input.switch.vertical-lr::after {
+    top: 3.2em;
+    left: 20em;
+  }
+
+  input.switch.vertical-rl:checked::after,
+  input.switch.vertical-lr:checked::after {
+    top: 0.5em;
+    left: 0.5em;
+  }
+
+  input.switch.sideways-rl::after,
+  input.switch.sideways-lr::after {
+    top: 2.6em;
+    left: 19em;
+  }
+
+  input.switch.sideways-rl:checked::after,
+  input.switch.sideways-lr:checked::after {
+    top: 0.6em;
+    left: 0.5em;
   }
 }
