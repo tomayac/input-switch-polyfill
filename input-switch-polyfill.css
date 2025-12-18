@@ -24,9 +24,16 @@ input.switch {
 
 @media (forced-colors: active) {
   input.switch {
-    --switch-accent: white !important;
-    --switch-background: white;
-    --switch-thumb: black;
+    forced-color-adjust: none;
+    --switch-accent: Canvas;
+    --switch-background: Canvas;
+    --switch-thumb: ButtonText;
+    border-color: ButtonText;
+  }
+
+  input.switch:checked {
+    box-shadow: inset 1em 0px 0px 0px var(--switch-accent) !important;
+    border-color: ButtonText !important;
   }
 }
 
@@ -69,7 +76,8 @@ input.switch:checked {
   /* Use color-mix to replicate the 0.5 alpha on the box-shadow 
      while keeping the border solid.
   */
-  box-shadow: inset 1em 0px 0px 0px color-mix(in srgb, var(--switch-accent), transparent 50%);
+  box-shadow: inset 1em 0px 0px 0px
+    color-mix(in srgb, var(--switch-accent), transparent 50%);
   border: 1px solid var(--switch-accent);
 }
 
