@@ -85,15 +85,26 @@ input.switch[disabled] {
     border: 1px solid ButtonText;
   }
 
+  /* Shared styles for the indicator */
+  input.switch::after {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    font-size: 0.5em;
+    font-family: Arial, sans-serif;
+    line-height: 1;
+  }
+
   /* Default (OFF) state: unchecked and not visually-on, OR visually-off */
   input.switch:not(:checked):not(.visually-on)::after,
   input.switch.visually-off::after {
     content: '◯';
     position: absolute;
-    left: 2.2em;
-    font-size: 0.5em;
-    font-family: Arial;
-    line-height: normal;
+    left: 50%;
   }
 
   /* Checked (ON) state: checked and not visually-off, OR visually-on */
@@ -106,46 +117,8 @@ input.switch[disabled] {
   input.switch.visually-on::after {
     content: '❙';
     position: absolute;
-    /* Re-declare to ensure specificity matches */
-    left: 0.75em;
-    top: 0.25em;
-    font-size: 0.5em;
-    /* Re-declare */
-    font-family: Arial;
-    /* Re-declare */
-    line-height: normal;
-    /* Re-declare */
+    left: 0;
     color: contrast-color(var(--switch-accent));
-  }
-
-  /* Vertical/Sideways Adjustments for OFF state */
-  input.switch.vertical-rl:not(:checked):not(.visually-on)::after,
-  input.switch.vertical-rl.visually-off::after,
-  input.switch.vertical-lr:not(:checked):not(.visually-on)::after,
-  input.switch.vertical-lr.visually-off::after,
-  input.switch.sideways-rl:not(:checked):not(.visually-on)::after,
-  input.switch.sideways-rl.visually-off::after,
-  input.switch.sideways-lr:not(:checked):not(.visually-on)::after,
-  input.switch.sideways-lr.visually-off::after {
-    top: 0.33em;
-    left: 1.9em;
-  }
-
-  /* Vertical/Sideways Adjustments for ON state */
-  input.switch.vertical-rl:checked:not(.visually-off)::after,
-  input.switch.vertical-rl.visually-on::after,
-  input.switch.vertical-lr:checked:not(.visually-off)::after,
-  input.switch.vertical-lr.visually-on::after {
-    top: 0.5em;
-    left: 0.5em;
-  }
-
-  input.switch.sideways-rl:checked:not(.visually-off)::after,
-  input.switch.sideways-rl.visually-on::after,
-  input.switch.sideways-lr:checked:not(.visually-off)::after,
-  input.switch.sideways-lr.visually-on::after {
-    top: 0.6em;
-    left: 0.5em;
   }
 }
 
