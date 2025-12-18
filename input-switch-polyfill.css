@@ -22,21 +22,6 @@ input.switch {
   touch-action: none;
 }
 
-@media (forced-colors: active) {
-  input.switch {
-    forced-color-adjust: none;
-    --switch-accent: Canvas;
-    --switch-background: Canvas;
-    --switch-thumb: ButtonText;
-    border-color: ButtonText;
-  }
-
-  input.switch:checked {
-    box-shadow: inset 1em 0px 0px 0px var(--switch-accent) !important;
-    border-color: ButtonText !important;
-  }
-}
-
 input.switch:is(:hover, :active, :focus) {
   transition:
     box-shadow 0.2s,
@@ -100,7 +85,9 @@ input.switch[disabled] {
     border: 1px solid ButtonText;
   }
 
-  input.switch::after {
+  /* Default (OFF) state: unchecked and not visually-on, OR visually-off */
+  input.switch:not(:checked):not(.visually-on)::after,
+  input.switch.visually-off::after {
     content: '◯';
     position: absolute;
     left: 2.2em;
@@ -109,35 +96,70 @@ input.switch[disabled] {
     line-height: normal;
   }
 
-  input.switch:checked {
+  /* Checked (ON) state: checked and not visually-off, OR visually-on */
+  input.switch:checked:not(.visually-off),
+  input.switch.visually-on {
     border-color: ButtonText;
   }
 
-  input.switch:checked::after {
+  input.switch:checked:not(.visually-off)::after,
+  input.switch.visually-on::after {
     content: '❙';
+    position: absolute;
+    /* Re-declare to ensure specificity matches */
     left: 0.75em;
     top: 0.25em;
     font-size: 0.5em;
+    /* Re-declare */
+    font-family: Arial;
+    /* Re-declare */
+    line-height: normal;
+    /* Re-declare */
     color: contrast-color(var(--switch-accent));
   }
 
-  input.switch.vertical-rl::after,
-  input.switch.vertical-lr::after,
-  input.switch.sideways-rl::after,
-  input.switch.sideways-lr::after {
+  /* Vertical/Sideways Adjustments for OFF state */
+  input.switch.vertical-rl:not(:checked):not(.visually-on)::after,
+  input.switch.vertical-rl.visually-off::after,
+  input.switch.vertical-lr:not(:checked):not(.visually-on)::after,
+  input.switch.vertical-lr.visually-off::after,
+  input.switch.sideways-rl:not(:checked):not(.visually-on)::after,
+  input.switch.sideways-rl.visually-off::after,
+  input.switch.sideways-lr:not(:checked):not(.visually-on)::after,
+  input.switch.sideways-lr.visually-off::after {
     top: 0.33em;
     left: 1.9em;
   }
 
-  input.switch.vertical-rl:checked::after,
-  input.switch.vertical-lr:checked::after {
+  /* Vertical/Sideways Adjustments for ON state */
+  input.switch.vertical-rl:checked:not(.visually-off)::after,
+  input.switch.vertical-rl.visually-on::after,
+  input.switch.vertical-lr:checked:not(.visually-off)::after,
+  input.switch.vertical-lr.visually-on::after {
     top: 0.5em;
     left: 0.5em;
   }
 
-  input.switch.sideways-rl:checked::after,
-  input.switch.sideways-lr:checked::after {
+  input.switch.sideways-rl:checked:not(.visually-off)::after,
+  input.switch.sideways-rl.visually-on::after,
+  input.switch.sideways-lr:checked:not(.visually-off)::after,
+  input.switch.sideways-lr.visually-on::after {
     top: 0.6em;
     left: 0.5em;
+  }
+}
+
+@media (forced-colors: active) {
+  input.switch {
+    forced-color-adjust: none;
+    --switch-accent: Canvas;
+    --switch-background: Canvas;
+    --switch-thumb: ButtonText;
+    border-color: ButtonText;
+  }
+
+  input.switch:checked {
+    box-shadow: inset 1em 0px 0px 0px var(--switch-accent);
+    border-color: ButtonText;
   }
 }

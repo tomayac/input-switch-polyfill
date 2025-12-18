@@ -1,6 +1,6 @@
 {
   "name": "input-switch-polyfill",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "A polyfill for <input type=\"checkbox\" switch>",
   "keywords": [
     "switch",

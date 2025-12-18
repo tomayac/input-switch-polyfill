@@ -111,6 +111,8 @@
 
         // Update styles
         if (isVisuallyOn) {
+          target.classList.add('visually-on');
+          target.classList.remove('visually-off');
           if (supportsColorMix) {
             target.style.boxShadow = `inset ${offset}px 0px 0px 0px color-mix(in srgb, var(--switch-accent), transparent 50%)`;
           } else {
@@ -118,6 +120,8 @@
           }
           target.style.border = `1px solid ${prefersContrastMore ? 'ButtonText' : 'var(--switch-accent)'}`;
         } else {
+          target.classList.add('visually-off');
+          target.classList.remove('visually-on');
           target.style.boxShadow = `inset ${offset}px 0px 0px 0px rgba(192, 192, 192, 1)`;
           target.style.border = `1px solid ${prefersContrastMore ? 'ButtonText' : 'rgba(192, 192, 192, 1)'}`;
         }
@@ -132,6 +136,8 @@
         target.style.transition = '';
         target.style.boxShadow = '';
         target.style.border = '';
+        target.classList.remove('visually-on');
+        target.classList.remove('visually-off');
 
         if (isDragging) {
           const finalChecked = currentProgress > 0.5;
