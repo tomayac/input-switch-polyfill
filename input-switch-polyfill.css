@@ -7,17 +7,27 @@ input[switch] {
 input.switch {
   /* Default fallback color */
   --switch-accent: #2196f3;
+  --switch-background: rgba(192, 192, 192, 1);
+  --switch-thumb: white;
   appearance: none;
   height: 1em;
   width: 2em;
   border-radius: 1em;
-  box-shadow: inset -1em 0px 0px 0px rgba(192, 192, 192, 1);
-  background-color: white;
-  border: 1px solid rgba(192, 192, 192, 1);
+  box-shadow: inset -1em 0px 0px 0px var(--switch-background);
+  background-color: var(--switch-thumb);
+  border: 1px solid var(--switch-background);
   font-size: inherit;
   position: relative;
   top: 0.2em;
   touch-action: none;
+}
+
+@media (forced-colors: active) {
+  input.switch {
+    --switch-accent: white !important;
+    --switch-background: white;
+    --switch-thumb: black;
+  }
 }
 
 input.switch:is(:hover, :active, :focus) {
@@ -59,8 +69,7 @@ input.switch:checked {
   /* Use color-mix to replicate the 0.5 alpha on the box-shadow 
      while keeping the border solid.
   */
-  box-shadow: inset 1em 0px 0px 0px
-    color-mix(in srgb, var(--switch-accent), transparent 50%);
+  box-shadow: inset 1em 0px 0px 0px color-mix(in srgb, var(--switch-accent), transparent 50%);
   border: 1px solid var(--switch-accent);
 }
 
@@ -86,8 +95,10 @@ input.switch[disabled] {
   input.switch::after {
     content: '◯';
     position: absolute;
-    left: 22em;
-    font-size: 0.05em !important;
+    left: 2.2em;
+    font-size: 0.5em;
+    font-family: Arial;
+    line-height: normal;
   }
 
   input.switch:checked {
@@ -98,26 +109,22 @@ input.switch[disabled] {
     content: '❙';
     left: 0.75em;
     top: 0.25em;
-    font-size: 0.5em !important;
+    font-size: 0.5em;
     color: contrast-color(var(--switch-accent));
   }
 
   input.switch.vertical-rl::after,
-  input.switch.vertical-lr::after {
-    top: 3.2em;
-    left: 20em;
+  input.switch.vertical-lr::after,
+  input.switch.sideways-rl::after,
+  input.switch.sideways-lr::after {
+    top: 0.33em;
+    left: 1.9em;
   }
 
   input.switch.vertical-rl:checked::after,
   input.switch.vertical-lr:checked::after {
     top: 0.5em;
     left: 0.5em;
-  }
-
-  input.switch.sideways-rl::after,
-  input.switch.sideways-lr::after {
-    top: 2.6em;
-    left: 19em;
   }
 
   input.switch.sideways-rl:checked::after,
