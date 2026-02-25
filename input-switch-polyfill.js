@@ -171,7 +171,10 @@
       'input[type="checkbox"][switch]'
     );
     switches.forEach(upgradeSwitch);
-    document.adoptedStyleSheets = [await sheetPromise];
+    document.adoptedStyleSheets = [
+      ...document.adoptedStyleSheets,
+      await sheetPromise,
+    ];
   }
 
   // Observer for dynamic content (SPAs, HTMX, etc.)
