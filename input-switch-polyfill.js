@@ -171,10 +171,10 @@
       'input[type="checkbox"][switch]'
     );
     switches.forEach(upgradeSwitch);
-    document.adoptedStyleSheets = [
-      ...document.adoptedStyleSheets,
-      await sheetPromise,
-    ];
+    const newSheet = await sheetPromise;
+    if (!document.adoptedStyleSheets.includes(newSheet)) {
+      document.adoptedStyleSheets = [...document.adoptedStyleSheets, newSheet];
+    }
   }
 
   // Observer for dynamic content (SPAs, HTMX, etc.)
