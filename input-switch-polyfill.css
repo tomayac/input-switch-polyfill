@@ -58,26 +58,12 @@ label:has(.sideways-lr) {
 }
 
 input.switch:checked {
-  /* Use color-mix to replicate the 0.5 alpha on the box-shadow 
-     while keeping the border solid.
-  */
-  box-shadow: inset 1em 0px 0px 0px
-    color-mix(in srgb, var(--switch-accent), transparent 50%);
+  box-shadow: inset 1em 0px 0px 0px var(--switch-accent);
   border: 1px solid var(--switch-accent);
 }
 
 input.switch[disabled] {
   opacity: 0.5;
-}
-
-/* Fallback for browsers that don't support color-mix 
-   (Older browsers will just see the solid default blue)
-*/
-@supports not (color: color-mix(in srgb, red, blue)) {
-  input.switch:checked {
-    box-shadow: inset 1em 0px 0px 0px rgba(33, 150, 243, 0.5);
-    border: 1px solid rgba(33, 150, 243, 1);
-  }
 }
 
 @media (prefers-contrast: more) {

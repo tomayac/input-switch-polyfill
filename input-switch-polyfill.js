@@ -15,8 +15,6 @@
     .then((r) => r.text())
     .then((css) => new CSSStyleSheet().replace(css));
 
-  const supportsColorMix = CSS.supports('color: color-mix(in srgb, red, blue)');
-
   // Helper to upgrade a single checkbox
   function upgradeSwitch(input) {
     // Avoid double-processing
@@ -113,17 +111,13 @@
         if (isVisuallyOn) {
           target.classList.add('visually-on');
           target.classList.remove('visually-off');
-          if (supportsColorMix) {
-            target.style.boxShadow = `inset ${offset}px 0px 0px 0px color-mix(in srgb, var(--switch-accent), transparent 50%)`;
-          } else {
-            target.style.boxShadow = `inset ${offset}px 0px 0px 0px var(--switch-accent)`;
-          }
+          target.style.boxShadow = `inset ${offset}px 0px 0px 0px var(--switch-accent)`;
           target.style.border = `1px solid ${prefersContrastMore ? 'ButtonText' : 'var(--switch-accent)'}`;
         } else {
           target.classList.add('visually-off');
           target.classList.remove('visually-on');
-          target.style.boxShadow = `inset ${offset}px 0px 0px 0px rgba(192, 192, 192, 1)`;
-          target.style.border = `1px solid ${prefersContrastMore ? 'ButtonText' : 'rgba(192, 192, 192, 1)'}`;
+          target.style.boxShadow = `inset ${offset}px 0px 0px 0px var(--switch-background)`;
+          target.style.border = `1px solid ${prefersContrastMore ? 'ButtonText' : 'var(--switch-background)'}`;
         }
       };
 
